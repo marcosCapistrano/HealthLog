@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://marcos:6081849@healthlogcluster0-rct8v.mongodb.net/healthlog?retryWrites=true&w=majority",
+  "jwtSecret": "eaegarai"
+}
