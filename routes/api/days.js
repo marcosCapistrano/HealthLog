@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator');
 const moment = require('moment');
 
 const Day = require('../../models/Day');
+const Meal = require('../../models/Meal');
 
 // @route   POST api/users
 // @desc    Register user
@@ -90,5 +91,36 @@ router.put(
     }
   }
 );
+
+// @route   GET api/days/:id
+// @desc    Get meals for the day id
+// @acess   Private
+router.get('/:id', auth, async (req, res) => {
+  try {
+    const day = await Day.findById(req.params.id);
+    const meals = day.meals;
+    const mealsNames = [];
+
+    let calories = 0,
+      carbohidrates = 0,
+      proteins = 0,
+      fats = 0;
+
+    for (actualMeal of meals) {
+      const mealModel = await Meal.findById(actualMeal.meal);
+      if (!mealsNames.includes(mealModel.name)) mealsNames.push(mealModel.name);
+
+      calories += mealModel.calories * actualMeal.amount;
+      carbohidrates += mealModel.carbohidrates * actualMeal.amount;
+      proteins += mealModel.proteins * actualMeal.amount;
+      fats += mealModel.fats * actualMeal.amount;
+    }
+
+    res.send({ mealsNames, calories, carbohidrates, proteins, fats });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
 
 module.exports = router;

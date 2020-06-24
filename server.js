@@ -12,7 +12,7 @@ app.use(express.json({ extended: false }));
 const PORT = process.env.PORT || 5000; //process.env.port necessario para deploy no heroku
 
 app.get('/', (req, res) => res.send('API Running'));
-
+app.listen
 // Define routes
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
