@@ -1,29 +1,30 @@
-import React from 'react';
+import React from "react";
 import {
-  Container,
-  Typography,
-  InputLabel,
-  Select,
-  MenuItem,
-  TextField,
-  Button,
-} from '@material-ui/core';
+	Container,
+	Typography,
+	InputLabel,
+	Select,
+	MenuItem,
+	TextField,
+	Button,
+	Grid,
+	Paper
+} from "@material-ui/core";
+import WeightCard from "./components/WeightCard";
+import CalendarCard from "./components/CalendarCard";
 
 export const Days = () => {
-  return (
-    <Container maxWidth='sm'>
-      <Typography variant='h6'>Selecione um dia:</Typography>
-      <InputLabel id='label'>Dia</InputLabel>
-      <Select labelId='label' id='select' value=''>
-        <MenuItem value='10'>Ten</MenuItem>
-        <MenuItem value='20'>Twenty</MenuItem>
-      </Select>
-      <Typography variant='h6'>Criar um novo dia:</Typography>
-      <InputLabel id='label'>Peso</InputLabel>
-      <TextField></TextField>
-      <Button>Add</Button>
-    </Container>
-  );
+	return (
+		<Grid container spacing={2}>
+			<Grid item xs={12} sm={4} md={2}>
+				<CalendarCard />
+				<WeightCard />
+			</Grid>
+			<Grid item xs={12} sm={8} md={10}>
+				<WeightCard />
+			</Grid>
+		</Grid>
+	);
 };
 
 export default Days;
