@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 
-import { Typography } from "@material-ui/core";
+import { Typography, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -14,9 +14,12 @@ const useStyles = makeStyles({
 	pos: {
 		marginBottom: 13
 	},
+	date: {
+		marginBottom: 20
+	},
 	weight: {
-		fontSize: 52,
-		fontWeight: 401
+		fontSize: 32,
+		fontWeight: 400
 	}
 });
 
@@ -32,10 +35,11 @@ const WeightCard = () => {
 				>
 					Peso
 				</Typography>
-				<Typography>28 de Junho de 2020</Typography>
-				<Typography className={classes.weight}>
-					67.6kg
-				</Typography>
+				<Typography className={classes.date}>28 de Junho de 2020</Typography>
+				<form>
+					<TextField type='number'></TextField>
+				</form>
+				<Typography className={classes.weight}>Kg</Typography>
 			</CardContent>
 		</Card>
 	);

@@ -1,0 +1,42 @@
+import React, { useState } from "react";
+import { Button, Card, CardContent, TextField } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({ root: {} });
+
+const Login = () => {
+    const classes = useStyles();
+    const [formData, setFormData] = useState({ login: "", password: "" });
+
+    const { login, password } = formData;
+
+    const onChange = e =>
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    return (
+        <Card>
+            <CardContent>
+        <form>>
+                <TextField
+                    label="login"
+                    name="login"
+                    value={login}
+                    onChange={onChange}
+                    required
+                ></TextField>
+                <TextField
+                    label="password"
+                    name="password"
+                    type="password"
+                    value={password}
+                    onChange={onChange}
+                    required
+                ></TextField>
+        </form>
+                <Button>REGISTER</Button>
+            </CardContent>
+        </Card>
+    );
+};
+
+export default Login;
